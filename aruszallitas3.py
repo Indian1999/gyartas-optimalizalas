@@ -33,9 +33,9 @@ model += xgy1 + xgy2 + xgy3 + xgy4 + xgy5 + xgy6 + xgy7 + xgy8 + xgyk <= 100
 model += xgy1 + xr1 == 22
 model += xgy2 + xr2 == 14
 model += xgy3 + xr3 == 18
-model += xgy4 + xr4 == 17
-model += xgy5 + xr5 == 15
-model += xgy6 + xr6 == 13
+model += xgy4 + xr4 + xk4 == 17
+model += xgy5 + xr5 + xk5 == 15
+model += xgy6 + xr6 + xk6== 13
 model += xgy7 + xr7 == 15
 model += xgy8 + xr8 == 20
 
@@ -49,4 +49,4 @@ for v in model.variables():
     print(f"{v.name}: {int(pulp.value(v))} db")
 
 
-print(f"Total cost: {float(pulp.value(model.objective))} $") # 2583.5
+print(f"Total cost: {float(pulp.value(model.objective))} $") # 2542 $
