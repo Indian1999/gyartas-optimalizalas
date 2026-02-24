@@ -27,7 +27,15 @@ xk5 = pulp.LpVariable("k5", lowBound = 0, cat = "Integer")
 xk6 = pulp.LpVariable("k6", lowBound = 0, cat = "Integer")
 xk = pulp.LpVariable("k", lowBound = 0, cat = "Integer")
 
+# 2$ -os költség xk-hoz:
 model += 14*xgy1 + 25*xgy2 + 21*xgy3 + 20 * xgy4 + 21.5*xgy5 + 19*xgy6 + 17*xgy7 + 30*xgy8 + 24*xr1 + 15*xr2 + 28*xr3 + 20*xr4 + 18.5*xr5 + 19.5*xr6 + 24*xr7 + 28*xr8 + 2 * xk + 11*xgyk + 10*xrk + 6*xk4 + 5*xk5 + 5*xk6
+
+# 2$ -os költség xgyk és xrk-hoz:
+#model += 14*xgy1 + 25*xgy2 + 21*xgy3 + 20 * xgy4 + 21.5*xgy5 + 19*xgy6 + 17*xgy7 + 30*xgy8 + 24*xr1 + 15*xr2 + 28*xr3 + 20*xr4 + 18.5*xr5 + 19.5*xr6 + 24*xr7 + 28*xr8 + 13*xgyk + 12*xrk + 6*xk4 + 5*xk5 + 5*xk6
+
+# 2$ -os költség xk4, xk5, xk6-hoz:
+#model += 14*xgy1 + 25*xgy2 + 21*xgy3 + 20 * xgy4 + 21.5*xgy5 + 19*xgy6 + 17*xgy7 + 30*xgy8 + 24*xr1 + 15*xr2 + 28*xr3 + 20*xr4 + 18.5*xr5 + 19.5*xr6 + 24*xr7 + 28*xr8 + 11*xgyk + 10*xrk + 8*xk4 + 7*xk5 + 7*xk6
+
 model += xr1 + xr2 + xr3 + xr4 + xr5 + xr6 + xr7 + xr8 + xrk <= 45
 model += xgy1 + xgy2 + xgy3 + xgy4 + xgy5 + xgy6 + xgy7 + xgy8 + xgyk <= 100
 model += xgy1 + xr1 == 22
@@ -35,12 +43,12 @@ model += xgy2 + xr2 == 14
 model += xgy3 + xr3 == 18
 model += xgy4 + xr4 + xk4 == 17
 model += xgy5 + xr5 + xk5 == 15
-model += xgy6 + xr6 + xk6== 13
+model += xgy6 + xr6 + xk6 == 13
 model += xgy7 + xr7 == 15
 model += xgy8 + xr8 == 20
 
-model += xgyk + xrk <= 30
-model += xgyk + xrk == xk
+model += xk <= 30
+model += xgyk + xrk >= xk
 model += xk4 + xk5 + xk6 <= xk
 
 model.solve()
