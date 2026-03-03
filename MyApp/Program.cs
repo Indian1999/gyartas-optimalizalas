@@ -6,7 +6,7 @@ public class Program
     {
         Solver solver = Solver.CreateSolver("SCIP");
         int[] igeny = { 22, 14, 18, 17, 15, 13, 15, 20 };
-        // koltsegek matrix:
+        // koltsegek matrix:        
         // model += 14*xgy1 + 25*xgy2 + 21*xgy3 + 20 * xgy4 + 21.5*xgy5 + 19*xgy6 + 17*xgy7 + 30*xgy8
         //  + 24*xr1 + 15*xr2 + 28*xr3 + 20*xr4 + 18.5*xr5 + 19.5*xr6 + 24*xr7 + 28*xr8
         double[,] koltseg = { { 14, 25, 21, 20, 21.5, 19, 17, 30 }, { 24, 15, 28, 20, 18.5, 19.5, 24, 28 } };
