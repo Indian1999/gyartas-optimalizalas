@@ -20,8 +20,8 @@ public class Program
             {25, 5, 100, 25, 0, 100, 100, 0}
         };
 
-        int n = 8;
-        int m = 8;
+        int n = koltseg.GetLength(0);
+        int m = koltseg.GetLength(1);
 
         Variable[,] x = new Variable[n, m];
         for (int i = 0; i < n; i++)
@@ -58,9 +58,9 @@ public class Program
 
         if (status == Solver.ResultStatus.OPTIMAL)
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < n; i++)
             {
-                for (int j = 0; j < 8; j++)
+                for (int j = 0; j < m; j++)
                 {
                     Console.Write($"{(int)x[i,j].SolutionValue()}");
                 }
