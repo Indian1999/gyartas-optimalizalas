@@ -1,4 +1,7 @@
 import pulp
+import time
+
+fullstart = time.perf_counter()
 
 model = pulp.LpProblem("Aruszallitas", pulp.LpMinimize)
 
@@ -28,7 +31,10 @@ for f in forrasok:
 for c in celok:
     model += pulp.lpSum(x[f][c] for f in forrasok) == igeny[c]
 
+start = time.perf_counter()
 model.solve()
+end = time.perf_counter()
+print(f"Model solve time {(end-start) * 1000}")
 
 for f in forrasok:
     for c in celok:
@@ -36,4 +42,8 @@ for f in forrasok:
         if val > 0:
             print(f"x[{f}][{c}]: {val} db")
 
+
 print(f"Total cost: {int(pulp.value(model.objective))} $")  # 2583
+
+fullend = time.perf_counter()
+print(f"Full solve time {(fullend-fullstart) * 1000}")

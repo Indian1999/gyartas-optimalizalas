@@ -76,6 +76,7 @@ public class Program
             Console.WriteLine($"k5: {(int)xk5.SolutionValue()} db");
             Console.WriteLine($"k6: {(int)xk6.SolutionValue()} db");
             Console.WriteLine($"Total cost: {solver.Objective().Value()} $");
+            Console.WriteLine(solver.WallTime()); // 85
         }
         else
         {
